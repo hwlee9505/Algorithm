@@ -8,7 +8,7 @@
 
 ---
 
-```markdown
+```ruby
  #include<stdio.h>
 
 int main(void){
