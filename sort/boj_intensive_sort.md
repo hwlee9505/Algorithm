@@ -55,6 +55,9 @@ public class Main{
 
 2. [BOJ 조금 더 복잡한 정렬](https://www.acmicpc.net/problem/1431)
 
+문제가 너무 시간에 민감해서 sysout쓰는것 조차 시간 초과난다.  
+고로 BufferWriter를 써줘야함.
+
 ```java
 import java.io.BufferedReader;
 import java.io.IOException;
