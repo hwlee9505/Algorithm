@@ -47,5 +47,5 @@ int main(int argc, char **argv) {
 => N * N  
 => `O(N * N)`  
 
-![](/img/n^2.png)
+![](./img/n^2.png)
 
