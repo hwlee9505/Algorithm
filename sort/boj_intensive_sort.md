@@ -54,6 +54,7 @@ public class Main{
 ```
 
 2. [BOJ 조금 더 복잡한 정렬](https://www.acmicpc.net/problem/1431)
+
 ```java
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -118,4 +119,36 @@ public class Main {
     }
 }
 ```
-3. [BOJ 매우 빠르게 정렬](https://www.acmicpc.net/problem/10989) 
+3. [BOJ 매우 빠르게 정렬](https://www.acmicpc.net/problem/10989)  
+
+```java
+import java.io.*;
+
+public class Main {
+
+    public static void main(String[] args) throws IOException {
+
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        int size = Integer.parseInt(br.readLine());
+
+        int[] nums = new int[10001];
+
+        for (int i = 1; i <= size; i++) {
+            nums[Integer.parseInt(br.readLine())]++;
+        }
+
+
+        for (int i = 1; i < nums.length; i++) {
+            if(nums[i] > 0) {
+
+                for (int j = 0; j < nums[i]; j++) {
+                    bw.write(Integer.toString(i) +"\n");
+                }
+            }
+        }
+        br.close();
+        bw.close();
+    }
+}
+```
