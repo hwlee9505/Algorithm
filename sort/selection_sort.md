@@ -1,4 +1,4 @@
-#선택정렬 (Selection sort)
+# 선택정렬 (Selection sort)
 
 ---
 
@@ -48,4 +48,5 @@ int main(int argc, char **argv) {
 => `O(N * N)`  
 
 ![](/img/n^2.png)  
-비효율적이다.
+
+비효율적인 알고리즘
