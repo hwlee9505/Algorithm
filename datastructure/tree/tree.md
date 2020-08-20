@@ -41,4 +41,4 @@ Red_-blacktree, AVL tree
 
 ## Perfect Binary Tree, 포화 이진 트리
 
-완전한 피라미드 형태
+완전한 피라미드 형태 
