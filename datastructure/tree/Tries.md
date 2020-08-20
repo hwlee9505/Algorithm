@@ -9,7 +9,7 @@
 이진 검색 트리에서는 O(M * logN)이 걸림 (M은 문자열의 길이)  
 따라서, Tries 트리를 이용해야한다.  
 
-![](img/binary_tree.png)  
+![](/img/binary_tree.png)  
 
 ---
 
@@ -19,5 +19,5 @@
 
 트라이 트리는 O(M)의 시간 복잡도  
 
-![](img/tries_tree.png)
+![](/img/tries_tree.png)
 
