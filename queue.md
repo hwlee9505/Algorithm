@@ -1,7 +1,7 @@
 # 큐 자료구조
 
-[C언어로 쉽게 풀어쓴 자료구조](https://cs.kangwon.ac.kr/~leeck/DS/DS_06.pdf)
-[cs 큐](https://hwlee9505.github.io/docs/algorithm_stackQueue)
+[C언어로 쉽게 풀어쓴 자료구조](https://cs.kangwon.ac.kr/~leeck/DS/DS_06.pdf)  
+[cs 큐](https://hwlee9505.github.io/docs/algorithm_stackQueue)  
 
 ```c
 #include <stdio.h>
