@@ -110,56 +110,56 @@ int is_empty(Queue *queue); //큐가 비었는지 확인
 void enqueue(Queue *queue, int data); //큐에 보관
 int dequeue(Queue *queue); //큐에서 꺼냄
 
-int main(void) {
-    int i;
-    Queue queue;
+  int main(void) {
+      int i;
+      Queue queue;
 
-    init(&queue);//큐 초기화
-    for (i = 1; i <= 5; i++)//1~5까지 큐에 보관
-    {
-        enqueue(&queue, i);
-    }
-    while (!is_empty(&queue))//큐가 비어있지 않다면 반복
-    {
-        printf("%d ", dequeue(&queue));//큐에서 꺼내온 값 출력
-    }
-    printf("\n");
-    return 0;
+      init(&queue);//큐 초기화
+      for (i = 1; i <= 5; i++)//1~5까지 큐에 보관
+      {
+          enqueue(&queue, i);
+      }
+      while (!is_empty(&queue))//큐가 비어있지 않다면 반복
+      {
+          printf("%d ", dequeue(&queue));//큐에서 꺼내온 값 출력
+      }
+      printf("\n");
+      return 0;
+  }
+
+  void init(Queue *queue) {
+      queue->front = queue->rear = 0; //front와 rear를 0으로 설정
+  }
+
+  int is_full(Queue *queue) {
+      //원형 큐에서 꽉 찼는지 비었는지 체크할 수 있게 rear 다음 공간은 빈 상태를 유지합니다.
+      return NEXT(queue->rear) == queue->front;//다음 rear가 front와 같으면 꽉 찬 상태
+  }
+
+  int is_empty(Queue *queue) {
+      return queue->front == queue->rear;    //front와 rear가 같으면 빈 상태
+  }
+
+  void enqueue(Queue *queue, int data) {
+      if (is_full(queue))//큐가 꽉 찼을 때
+      {
+          printf("큐가 꽉 찼음\n");
+          return;
+      }
+      queue->buf[queue->rear] = data;//rear 인덱스에 데이터 보관
+      queue->rear = NEXT(queue->rear); //rear를 다음 위치로 설정
+  }
+
+  int dequeue(Queue *queue) {
+      int re = 0;
+      if (is_empty(queue))//큐가 비었을 때
+      {
+          printf("큐가 비었음\n");
+          return re;
+      }
+      re = queue->buf[queue->front];//front 인덱스에 보관한 값을 re에 설정
+      queue->front = NEXT(queue->front);//front를 다음 위치로 설정
+      return re;
+  }
 }
-
-void init(Queue *queue) {
-    queue->front = queue->rear = 0; //front와 rear를 0으로 설정
-}
-
-int is_full(Queue *queue) {
-    //원형 큐에서 꽉 찼는지 비었는지 체크할 수 있게 rear 다음 공간은 빈 상태를 유지합니다.
-    return NEXT(queue->rear) == queue->front;//다음 rear가 front와 같으면 꽉 찬 상태
-}
-
-int is_empty(Queue *queue) {
-    return queue->front == queue->rear;    //front와 rear가 같으면 빈 상태
-}
-
-void enqueue(Queue *queue, int data) {
-    if (is_full(queue))//큐가 꽉 찼을 때
-    {
-        printf("큐가 꽉 찼음\n");
-        return;
-    }
-    queue->buf[queue->rear] = data;//rear 인덱스에 데이터 보관
-    queue->rear = NEXT(queue->rear); //rear를 다음 위치로 설정
-}
-
-int dequeue(Queue *queue) {
-    int re = 0;
-    if (is_empty(queue))//큐가 비었을 때
-    {
-        printf("큐가 비었음\n");
-        return re;
-    }
-    re = queue->buf[queue->front];//front 인덱스에 보관한 값을 re에 설정
-    queue->front = NEXT(queue->front);//front를 다음 위치로 설정
-    return re;
-}
-```}
-
+```
