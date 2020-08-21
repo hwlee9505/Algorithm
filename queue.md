@@ -3,6 +3,94 @@
 [C언어로 쉽게 풀어쓴 자료구조](https://cs.kangwon.ac.kr/~leeck/DS/DS_06.pdf)  
 [cs 큐](https://hwlee9505.github.io/docs/algorithm_stackQueue)  
 
+## Java 큐  
+
+```java
+import java.util.NoSuchElementException;
+
+class Queue<T> {
+
+    class Node<T> {
+
+        private T data;
+        private Node<T> next;
+
+        public Node(T data) {
+            this.data = data;
+        }
+    }
+
+    // queue는 앞 뒤로 주소를 알고 있어야 한다. -> 데이터가 들어오거나 나갈때 필요하기 때문에
+    private Node<T> first;
+    private Node<T> last;
+
+    public void add(T item) {
+        Node<T> t = new Node<T>(item);
+
+        // queue는 후위 삽입
+        if (last != null) {
+            last.next = t;
+        }
+
+        last = t;
+
+        if (first == null) {
+            first = last;
+        }
+    }
+
+    public T remove() {
+        if (first == null) {
+            throw new NoSuchElementException();
+        }
+        T data = first.data;
+        first = first.next; // 앞을 덮어써버림
+
+        if (first == null) {
+            last = null;
+        }
+        return data;
+    }
+
+    public T peek() {
+
+        if (first == null) {
+            throw new NoSuchElementException();
+        }
+        return first.data;
+    }
+
+    public boolean isEmpty() {
+        return first == null;
+    }
+
+}
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        Queue<Integer> q = new Queue<Integer>();
+        q.add(1);
+        q.add(2);
+        q.add(3);
+        q.add(4);
+
+        System.out.println(q.remove());
+        System.out.println(q.remove());
+        System.out.println(q.peek());
+        System.out.println(q.remove());
+        System.out.println(q.isEmpty());
+        System.out.println(q.remove());
+        System.out.println(q.isEmpty());
+    }
+}
+```
+
+---
+
+## C 원형 큐  
+
 ```c
 #include <stdio.h>
 
