@@ -10,6 +10,8 @@ public class Main {
 
         int n = Integer.parseInt(st.nextToken());
         int m = Integer.parseInt(st.nextToken());
+
+        // 에라토스테네스의 체 이용하기
         boolean[] check = new boolean[m+1];
         check[0] = check[1] = true;
         for (int i=2; i*i <= m; i++) {
