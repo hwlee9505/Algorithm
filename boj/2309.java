@@ -35,7 +35,7 @@ public class Main {
 
                 int sum = 0;
 
-// 내가 짠 코드
+// 내가 짠 코드 => O(N^3)
                 for (int h : arr) {
                     if (h != arr[i] && h != arr[j])
                         sum += h;
@@ -51,7 +51,7 @@ public class Main {
                     //  원하는 조건이 갖춰 졌다면 종료시켜야 한다.
                 }
 
-// 더 간결한 코드
+// 더 간결한 코드 => O(N^2)
 //                if (sum - arr[i] - arr[j] == 100) {
 //                    for (int k = 0; k < arr.length; k++) {
 //                        if (i == k || j == k) continue;
