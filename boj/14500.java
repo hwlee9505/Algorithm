@@ -5,7 +5,7 @@ import java.util.StringTokenizer;
 
 /**
  * Brute Force 3 단계
- * <p>
+ *
  * 1. 문제의 가능한 경우의 수를 계산해본다. (손으로, Permutation or Combination)
  * 2. 가능한 모든 방법을 다 만들어 본다. (하나도 빠짐없어야 한다.)
  * 3. 각각의 방법을 이용해 답을 구해본다.
@@ -98,7 +98,7 @@ public class Main {
                 }
 
                 //  7.
-                //     🟧
+                //      🟧
                 //  🟥🟧🟧
                 if ((j + 2 < xSize) && (i > 0)) {
                     int temp = arr2D[i][j] + arr2D[i][j + 1] + arr2D[i][j + 2] + arr2D[i - 1][j + 2];
@@ -126,7 +126,7 @@ public class Main {
 
                 //  10.
                 //  🟥🟧🟧
-                //     🟧
+                //      🟧
                 if ((j + 2 < xSize) && (i + 1 < ySize)) {
                     int temp = arr2D[i][j] + arr2D[i][j + 1] + arr2D[i][j + 2] + arr2D[i + 1][j + 2];
                     sum = Math.max(sum, temp);
