@@ -1,7 +1,3 @@
 # Algorithm
 
-## BOJ
-## Progrmers
-## Dongbinna
-## SWEngineer
-## CodePlus
+## BOJ, Programmers, Dongbinna, SW Engineer, CodePlus
