@@ -3,7 +3,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 // 전체 시간 복잡도는 어떻게 될까?
-// O(N * N!) => O(N!)이지 않을까?
+// O(N * N!)
 
 public class Main {
 
