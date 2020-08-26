@@ -70,11 +70,79 @@ public class Main {
 
 
         // 4. A[i]부터 순열을 뒤집는다.                              => O(N)
+        //
+        //
+        // 이걸 놓쳤는데 서로 양끝에서 부터 swap을 해줬으면 됬는데
+        //
+        // 이렇게 안한
+        // 허접한 코드이다.
         for (int i = 0; i < iIndex; i++) {
             System.out.print(arr[i] + " ");
         }
         for (int i = arr.length - 1; i >= iIndex; i--) {
             System.out.print(arr[i] + " ");
+        }
+    }
+}
+
+/////////////////////////////////////////////////////////////////////////
+///////////////////////////////2번째 방법////////////////////////////////
+/////////////////////////////////////////////////////////////////////////
+
+import java.util.*;
+
+public class Main {
+    public static boolean next_permutation(int[] a) {
+        int i = a.length-1;
+
+        // 거꾸로 탐색 하면서 => 그 이유는 index가 가장 큰 것중에서 찾는 것이기 때문에
+        // a[i-1] < a[i] 중 i가 가장 큰 것을 찾아야한다.
+        while (i > 0 && a[i-1] >= a[i]) {
+            i -= 1;
+        }
+
+        // 내림차순일 경우 false를 리턴 한다.
+        if (i <= 0) {
+            return false;
+        }
+
+        // 거꿀로 탐색 하면서 => 그 이유도 마찬가지로 idx가 가장 큰 것중에서 찾는 것이기 때문에
+        // j >= i && a[j] > a[i-1] 이어야 한다.
+        int j = a.length-1;
+        while (a[j] <= a[i-1]) {
+            j -= 1;
+        }
+
+        // swap 해주고
+        int temp = a[i-1];
+        a[i-1] = a[j];
+        a[j] = temp;
+
+        j = a.length-1;
+        // (i~j 까지) 서로 양끝에 있는 idx를 swap하면 O(N)인데 이걸 생각 못했다.
+        while (i < j) {
+            temp = a[i];
+            a[i] = a[j];
+            a[j] = temp;
+            i += 1;
+            j -= 1;
+        }
+        return true;
+    }
+    public static void main(String args[]) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int[] a = new int[n];
+        for (int i=0; i<n; i++) {
+            a[i] = sc.nextInt();
+        }
+        if (next_permutation(a)) {
+            for (int i=0; i<n; i++) {
+                System.out.print(a[i] + " ");
+            }
+            System.out.println();
+        } else {
+            System.out.println("-1");
         }
     }
 }
