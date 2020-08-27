@@ -3,6 +3,41 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class Main {
+    public static void main(String[] args) throws IOException {
+
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int size = Integer.parseInt(br.readLine());
+        int[] arr = new int[size];
+
+        for (int i = 0; i < size; i++) {
+            arr[i] = Integer.parseInt(br.readLine());
+            System.out.println(go(0,arr[i]));
+        }
+    }
+
+    public static int go(int sum, int goal) {
+
+        // 1.불가능한 경우
+        if (sum > goal) return 0;
+
+        // 2.정답을 찾은 경우
+        if (sum == goal) return 1;
+
+        int now = 0;
+
+        for(int i = 1 ; i <= 3; i++ ){
+            now += go( sum +i, goal);
+        }
+        return now;
+    }
+}
+/////////////////////////////////////////////////////////////////////////////////////////////
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+public class Main {
 
     public static void main(String[] args) throws IOException {
 
