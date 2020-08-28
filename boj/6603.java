@@ -92,6 +92,9 @@ public class Main {
             // 있고 없고 따지는 경우의 수 배열
             int[] boolChecked = new int[K];
 
+
+            // ✨ 0과 1로 이루어진 permutation이
+            // Combinatation으로 활용되도록 되었다.
             int cnt = 0;
             while (cnt < 6) {
                 boolChecked[cnt++] = 1;
