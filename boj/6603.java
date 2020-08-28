@@ -1,6 +1,67 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.StringTokenizer;
+
+// Brute Force - Recursion
+
+public class Main {
+
+    private static ArrayList<Integer> lotto = new ArrayList<>();
+
+    public static void main(String[] args) throws IOException {
+
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st;
+
+        while (true) {
+
+            st = new StringTokenizer(br.readLine());
+            int size = Integer.parseInt(st.nextToken());
+
+            if (size == 0) {
+                return;
+            }
+
+            int[] arr = new int[size];
+            for (int i = 0; i < arr.length; i++) {
+                arr[i] = Integer.parseInt(st.nextToken());
+            }
+
+            go(arr, 0,0);
+            System.out.println();
+
+        }
+    }
+
+    public static void go(int[] arr, int idx, int cnt) {
+
+        // 1. 정답을 찾은 경우
+        if (cnt == 6) {
+            for (int i : lotto) {
+                System.out.print(i + " ");
+            }
+            System.out.println();
+            return;
+        }
+
+        // 2. 불가능한 경우
+        if (idx >= arr.length) {
+            return;
+        }
+
+        // 3. 다음 경우 호출
+        lotto.add(arr[idx]);
+        go(arr, idx + 1, cnt + 1);
+        lotto.remove(lotto.size()-1);
+        go(arr, idx+1, cnt);
+    }
+}
+///////////////////////////////////////////////////////////////////////////////////////////
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
 public class Main {
