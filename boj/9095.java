@@ -23,6 +23,7 @@ public class Main {
         // 2.정답을 찾은 경우
         if (sum == goal) return 1;
 
+        // 3.다음 경우 호출
         int now = 0;
 
         for(int i = 1 ; i <= 3; i++ ){
