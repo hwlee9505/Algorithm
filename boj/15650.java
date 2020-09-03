@@ -33,6 +33,7 @@ public class Main {
         }
 
         // 3. 다음 경우 호출
+        // start를 사용함으로서 (i+1 보다 크거나 같은 수를 구현)
         for (int i = start; i <= n; i++) {
             if (check[i]) {
                 continue;
