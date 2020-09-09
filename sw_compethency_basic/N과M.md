@@ -7,7 +7,7 @@
 | 15651 | [N과 M (3)](https://www.acmicpc.net/problem/15651) | [java](https://github.com/hwlee9505/Algorithm/blob/master/boj/15651.java) |
 | 15652 | [N과 M (4)](https://www.acmicpc.net/problem/15652) | [java](https://github.com/hwlee9505/Algorithm/blob/master/boj/15652.java) |
 
-# N과 M  
+# N과 M' 
 
 | 번호 | 문제 | 코드 |
 |:---:|:---:|:---|
