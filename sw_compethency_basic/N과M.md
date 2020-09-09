@@ -13,3 +13,4 @@
 |:---:|:---:|:---|
 | 15654 | [N과 M (5)](https://www.acmicpc.net/problem/15654) | [java](https://github.com/hwlee9505/Algorithm/blob/master/boj/15654.java) |
 | 15655 | [N과 M (6)](https://www.acmicpc.net/problem/15655) | [java](https://github.com/hwlee9505/Algorithm/blob/master/boj/15655.java) |
+| 15656 | [N과 M (7)](https://www.acmicpc.net/problem/15656) | [java](https://github.com/hwlee9505/Algorithm/blob/master/boj/15656.java) |
