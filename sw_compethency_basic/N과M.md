@@ -14,3 +14,28 @@
 | 15654 | [N과 M (5)](https://www.acmicpc.net/problem/15654) | [java](https://github.com/hwlee9505/Algorithm/blob/master/boj/15654.java) |
 | 15655 | [N과 M (6)](https://www.acmicpc.net/problem/15655) | [java](https://github.com/hwlee9505/Algorithm/blob/master/boj/15655.java) |
 | 15656 | [N과 M (7)](https://www.acmicpc.net/problem/15656) | [java](https://github.com/hwlee9505/Algorithm/blob/master/boj/15656.java) |
+
+---
+
+## N과 M (1)  
+
+1부터 N까지 자연수 중에서 중복 없이 M개를 고른 수열  
+
+---  
+
+## N과 M (2)  
+
+오름차순
+
+---  
+
+## N과 M (3)  
+
+같은 수를 중복 허용
+
+---  
+
+## N과 M (4)  
+
+오름차순 + 같은 수를 중복 허용  
+=비내림차순
