@@ -40,7 +40,7 @@ public class Main {
         }
 
         // 2. 불가능한 경우
-        if (idx > n) {
+        if (idx >= n) {
             return new StringBuilder();
         }
 
