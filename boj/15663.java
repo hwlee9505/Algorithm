@@ -8,7 +8,44 @@ public class Main {
 
     public static int[] arr = new int[10];
     public static int[] num = new int[10];
-    public static int[] count = new int[10];
+    public static int[] check = new int[10];
+
+    public static void main(String[] args) throws IOException {
+
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st = new StringTokenizer(br.readLine());
+
+        int n = Integer.parseInt(st.nextToken());
+        int m = Integer.parseInt(st.nextToken());
+
+        st = new StringTokenizer(br.readLine());
+
+        int[] temp = new int[9];
+        for (int i = 0; i < n; i++) {
+            temp[i] = Integer.parseInt(st.nextToken());
+        }
+
+        Arrays.sort(temp, 0, n);
+
+        int idx = 0;
+        int selected = temp[0];
+        int cnt = 1;
+
+        for (int i = 1; i <= n; i++) {
+            if (selected == temp[i]) {
+                cnt++;
+                continue;
+            }
+            check[idx] = cnt;
+            num[idx] = selected;
+            selected = temp[i];
+            idx++;
+            cnt = 1;
+        }
+        n = idx;
+
+        System.out.println(recurse(0, n, m));
+    }
 
     public static StringBuilder recurse(int index, int n, int m) {
 
@@ -29,49 +66,13 @@ public class Main {
         StringBuilder amswer = new StringBuilder();
 
         for (int i = 0; i < n; i++) {
-            if (count[i] > 0) {
-                count[i] -= 1;
+            if (check[i] > 0) {
+                check[i] -= 1;
                 arr[index] = i;
                 amswer.append(recurse(index + 1, n, m));
-                count[i] += 1;
+                check[i] += 1;
             }
         }
         return amswer;
-    }
-
-    public static void main(String[] args) throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        StringTokenizer st = new StringTokenizer(br.readLine());
-
-        int n = Integer.parseInt(st.nextToken());
-        int m = Integer.parseInt(st.nextToken());
-
-        int[] temp = new int[n];
-
-        st = new StringTokenizer(br.readLine());
-        for (int i = 0; i < n; i++) {
-            temp[i] = Integer.parseInt(st.nextToken());
-        }
-        Arrays.sort(temp);
-        int idx = 0;
-        int selected = temp[0];
-        int cnt = 1;
-        for (int i = 1; i < n; i++) {
-            if (selected == temp[i]) {
-                cnt+= 1;
-            } else {
-                num[idx] = selected;
-                count[idx] = cnt;
-                idx += 1;
-                selected = temp[i];
-                cnt = 1;
-            }
-        }
-        num[idx] = selected;
-        count[idx] = cnt;
-
-        n = idx + 1;
-
-        System.out.println(recurse(0, n, m));
     }
 }
