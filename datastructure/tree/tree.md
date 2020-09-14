@@ -1,5 +1,5 @@
 # Tree  
-
+ 
 트리는 부모 자식 관게를 가지는 자료구조  
 
 ---
@@ -27,7 +27,7 @@ Red_-blacktree, AVL tree
 
 ---
 
-## Complete Binary Tree 
+## Complete Binary Tree, 완전 이진 트리
 
 채워지는 순서를 맞췄다면  
 
