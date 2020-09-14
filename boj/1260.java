@@ -76,7 +76,7 @@ public class Main {
             for(int y : arr[x]){
                 if(check[y] == false){
                     check[y] = true;
-                    q.add(y);
+                    q.offer(y);
                 }
             }
         }
