@@ -3,7 +3,8 @@
 | 번호 | 문제 | 코드 |
 |:---:|:---:|:---|
 | 13023 | [ABCDE](https://www.acmicpc.net/problem/13023) | [java](https://github.com/hwlee9505/Algorithm/blob/master/boj/13023.java) |
-| 1260 | [DFS와 BFS](https://www.acmicpc.net/problem/1260) | [java](https://github.com/hwlee9505/Algorithm/blob/master/boj/1260.java) |
+| 1260  | [DFS와 BFS](https://www.acmicpc.net/problem/1260) | [java](https://github.com/hwlee9505/Algorithm/blob/master/boj/1260.java) |
+| 11724 | [연결 요소의 개수](https://www.acmicpc.net/problem/11724) | [java](https://github.com/hwlee9505/Algorithm/blob/master/boj/11724.java) |
 
 ---
 
