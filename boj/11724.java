@@ -1,17 +1,15 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.StringTokenizer;
+import java.util.*;
 
 public class Main {
 
+    // 인접 리스트
     public static ArrayList<Integer>[] arr;
     public static boolean[] check;
 
     public static void main(String[] args) throws IOException {
-
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
 
@@ -33,23 +31,24 @@ public class Main {
             arr[to].add(from);
         }
 
-        check = new boolean[n + 1];
-
         for (int i = 1; i <= n; i++) {
             Collections.sort(arr[i]);
         }
 
-        // 여기서 연결 요소
+//        check = new boolean[n + 1];
+//        printArr();
+//        dfs(1);
+
+        check = new boolean[n + 1];
         int answer = 0;
         for (int i = 1; i <= n; i++) {
-            if (check[i] == false) {
-                dfs(i);
+            if(check[i] == false){
+                bfs(i);
                 answer++;
             }
         }
 
         System.out.println(answer);
-
     }
 
     public static void dfs(int x) {
@@ -63,7 +62,24 @@ public class Main {
         }
     }
 
+    public static void bfs(int start) {
+        Queue<Integer> queue = new LinkedList<>();
+        queue.offer(start);
+        check[start] = true;
+        while (!queue.isEmpty()) {
+            int temp = queue.poll();
+//            System.out.print(temp + " ");
+            for (int y : arr[temp]) {
+                if (check[y] == false) {
+                    check[y] = true;
+                    queue.offer(y);
+                }
+            }
+        }
+    }
+
     public static void printArr() {
+
         int idx = 0;
         for (ArrayList<Integer> a : arr) {
             System.out.print(idx++ + ": ");
