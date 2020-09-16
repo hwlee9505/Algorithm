@@ -67,7 +67,7 @@ public class Main {
             }
         }
     }
-
+ 
     // 인접 리스트 출력
     public static void printArr(ArrayList<Integer>[] arr) {
         int idx = 0;
