@@ -29,6 +29,11 @@
 | 2667  | [단지번호붙이기](https://www.acmicpc.net/problem/2667) | [java](https://github.com/hwlee9505/Algorithm/blob/master/boj/2667.java) |
 | 4963  | [섬의 개수](https://www.acmicpc.net/problem/4963) | [java](https://github.com/hwlee9505/Algorithm/blob/master/boj/4963.java) |
 
+# BFS  
+| 번호 | 문제 | 코드 |
+|:---:|:---:|:---|
+| 2178  | [미로 탐색](https://www.acmicpc.net/problem/2178) | [java](https://github.com/hwlee9505/Algorithm/blob/master/boj/2178.java) |
+
 ---
 
 # 공간 복잡도
@@ -103,3 +108,22 @@
 - 어떤 위치와 연결된 모든 위치를 찾는 알고리즘  
 
 ---
+
+# BFS  
+
+BFS 목적은 임의의 정점에서 시작해서, 모든 정점을 한 번씩 방문하는 것이다.  
+
+BFS는 최단 거리를 구하는 알고리즘이다.**(특정한 조건을 만족했을 시애)  
+
+- 특정조건  
+BFS는 `모든 가중치가 1`일 때, `최단 거리를 구하는 알고리즘`이다.  
+
+- BFS를 이용해서 해결할 수 있는 문제(`최단 거리`)는 다음과 같은 조건을 만족해야 한다.  
+1. `최소 비용` 문제여야 한다.  
+2. `간선의 가중치`가 `1`이어야 한다.  
+3. 정점과 간선의 개수가 적어야 한다.(적다는 것은 문제의 조건에 맞춰서 해결할 수 있다는 것을 의미한다.)  
+ㄴ 시간제한, 메모리제한을 지키기 위해서  
+
+
+
+
