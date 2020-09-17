@@ -14,6 +14,18 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.Queue;
+
+class Pair {
+    int x;
+    int y;
+
+    public Pair(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
+}
 
 public class Main {
 
@@ -22,65 +34,81 @@ public class Main {
     //                             ->  <-  |  ^
     //                                     v  |
     public static void main(String[] args) throws IOException {
-
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
         int n = Integer.parseInt(br.readLine());
 
         int[][] arr = new int[n][n];
+        int[][] check = new int[n][n];
 
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i < arr.length; i++) {
             String temp = br.readLine();
-            for (int j = 0; j < n; j++) {
+            for (int j = 0; j < arr[0].length; j++) {
                 arr[i][j] = temp.charAt(j) - '0';
             }
         }
 
         int cnt = 0;
-        int[][] group = new int[n][n];
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
-                if (arr[i][j] == 1 && group[i][j] == 0) {
-                    dfs(arr, group, i, j, ++cnt, n);
+                if (arr[i][j] == 1 && check[i][j] == 0) {
+                    dfs(arr, check, i, j, ++cnt, n);
+//                    bfs(arr, check, i, j, ++cnt, n);
                 }
             }
         }
 
+
         int[] answer = new int[cnt];
 
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
-                if (group[i][j] != 0) {
-                    answer[group[i][j] - 1] += 1;
+        for (int i = 0; i < check.length; i++) {
+            for (int j = 0; j < check[0].length; j++) {
+                if (check[i][j] != 0) {
+                    answer[check[i][j] - 1]++;
                 }
             }
         }
 
         Arrays.sort(answer);
+
         System.out.println(cnt);
-        for (int i = 0; i < cnt; i++) {
-            System.out.println(answer[i]);
+        for(int i : answer){
+            System.out.println(i);
         }
     }
 
-    public static void dfs(int[][] arr, int[][] group, int x, int y, int cnt, int n) {
-        group[x][y] = cnt;
+    // 1. Depth_First_Search
+    public static void dfs(int[][] arr, int[][] check, int x, int y, int cnt, int n) {
+        check[x][y] = cnt;
         for (int k = 0; k < 4; k++) {
             int nx = x + dx[k];
             int ny = y + dy[k];
             if ((0 <= nx && nx < n) && (0 <= ny && ny < n)) {
-                if (arr[nx][ny] == 1 && group[nx][ny] == 0) {
-                    dfs(arr, group, nx, ny, cnt, n);
+                if (arr[nx][ny] == 1 && check[nx][ny] == 0) {
+                    dfs(arr, check, nx, ny, cnt, n);
                 }
             }
         }
     }
 
-    public static void printArr(int[][] arr) {
-        for (int[] a : arr) {
-            for (int i : a) {
-                System.out.print(i + " ");
+    // 2. Breadth_First_Search
+    public static void bfs(int[][] arr, int[][] check, int x, int y, int cnt, int n) {
+        Queue<Pair> q = new LinkedList<>();
+        q.offer(new Pair(x, y));
+        check[x][y] = cnt;
+        while (!q.isEmpty()) {
+
+            Pair temp = q.poll();
+            for (int k = 0; k < 4; k++) {
+                int nx = temp.x + dx[k];
+                int ny = temp.y + dy[k];
+                if ((0 <= nx && nx < n) && (0 <= ny && ny < n)) {
+                    if (arr[nx][ny] == 1 && check[nx][ny] == 0) {
+                        q.offer(new Pair(nx, ny));
+                        check[nx][ny] = cnt;
+                    }
+                }
             }
-            System.out.println();
         }
     }
 }
