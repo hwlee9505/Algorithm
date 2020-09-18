@@ -25,7 +25,7 @@ public class Main {
         // 👉 현재 상황 (default로 어떤 값을 설정해 놓아야 하는가)
         //    영선이가 이미 화면에 이모티콘 1개를 입력해 놓은 상태
         //    클립보드에는 이모티콘이 없다.
-        q.offer(1);
+        q.offer();
         q.offer(0);
 
         dist[1][0] = 0;
@@ -57,12 +57,6 @@ public class Main {
                 q.offer(s - 1);
                 q.offer(c);
             }
-        }
-        for (int[] a : dist) {
-            for (int i : a) {
-                System.out.print(i + " ");
-            }
-            System.out.println();
         }
 
         int answer = -1;
