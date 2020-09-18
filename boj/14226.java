@@ -58,7 +58,7 @@ public class Main {
                 q.offer(c);
             }
         }
-
+ 
         int answer = -1;
         for (int i = 0; i <= n; i++) {
             if (dist[n][i] != -1) {
