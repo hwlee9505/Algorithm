@@ -34,6 +34,7 @@
 |:---:|:---:|:---|
 | 2178  | [미로 탐색](https://www.acmicpc.net/problem/2178) | [java](https://github.com/hwlee9505/Algorithm/blob/master/boj/2178.java) |
 | 7576  | [토마토](https://www.acmicpc.net/problem/7576) | [java](https://github.com/hwlee9505/Algorithm/blob/master/boj/7576.java) |
+| 1697  | [숨바꼭질](https://www.acmicpc.net/problem/1697) | [java](https://github.com/hwlee9505/Algorithm/blob/master/boj/1697.java) |
 
 ---
 
