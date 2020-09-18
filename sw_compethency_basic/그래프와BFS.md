@@ -37,6 +37,11 @@
 | 1697  | [숨바꼭질](https://www.acmicpc.net/problem/1697) | [java](https://github.com/hwlee9505/Algorithm/blob/master/boj/1697.java) |
 | 14226 | [이모티콘](https://www.acmicpc.net/problem/14226) | [java](https://github.com/hwlee9505/Algorithm/blob/master/boj/14226.java) |
 
+# 덱 사용하기
+
+| 번호 | 문제 | 코드 |
+|:---:|:---:|:---|
+| 13549  | [숨바꼭질 3](https://www.acmicpc.net/problem/13549) | [java](https://github.com/hwlee9505/Algorithm/blob/master/boj/13549.java) |
 ---
 
 # 공간 복잡도
