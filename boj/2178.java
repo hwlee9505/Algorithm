@@ -12,8 +12,8 @@ import java.util.StringTokenizer;
  *    => 배열 인덱스가 0부터 시작이니깐 그렇게 푸는 분도 있고
  *       한칸 크게 잡아서 11 nm으로 잡는 분들도 있다.
  */
-class Pair {
 
+class Pair {
     int x;
     int y;
 
@@ -29,7 +29,6 @@ public class Main {
     public static final int[] dy = {1, -1, 0, 0};
 
     public static void main(String[] args) throws IOException {
-
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
 
@@ -48,29 +47,36 @@ public class Main {
         int[][] dist = new int[n][m];
         boolean[][] check = new boolean[n][m];
 
+        // (1, 1) -> (n, m)의 거리 비용
+        // == (0, 0) -> (n-1, m-1)의 거리 비용
         int startX = 0;
         int startY = 0;
-        
         bfs(arr, dist, check, startX, startY, n, m);
 
         System.out.println(dist[n - 1][m - 1]);
-//        printArr(dist);
+
+//        printDist(dist);
     }
 
-    public static void bfs(int[][] arr, int[][] dist, boolean[][] check, int x, int y, int n, int m) {
+    // 최단 거리를 구하기 위해선 bfs를 사용
+    public static void bfs(int[][] arr, int[][] dist, boolean[][] check, int startX, int startY, int n, int m) {
         Queue<Pair> q = new LinkedList<>();
-        q.offer(new Pair(x, y));
-        check[x][y] = true;
-        dist[x][y] = 1;
+        // 1. queue 자료구조에 (0,0) 넣고
+        q.offer(new Pair(startX, startY));
+        // 2. dist(0,0)에 1을 넣고
+        dist[startX][startY] = 1;
+        // 3. check(0,0)에 true로
+        check[startX][startY] = true;
+
         while (!q.isEmpty()) {
-            Pair pair = q.poll();
+            Pair priorPair = q.poll();
             for (int i = 0; i < 4; i++) {
-                int nx = pair.x + dx[i];
-                int ny = pair.y + dy[i];
+                int nx = priorPair.x + dx[i];
+                int ny = priorPair.y + dy[i];
                 if ((0 <= nx && nx < n) && (0 <= ny && ny < m)) {
-                    if (check[nx][ny] == false && arr[nx][ny] == 1) {
+                    if (arr[nx][ny] == 1 && check[nx][ny] == false) {
                         q.offer(new Pair(nx, ny));
-                        dist[nx][ny] = dist[pair.x][pair.y] + 1;
+                        dist[nx][ny] = dist[priorPair.x][priorPair.y] + 1;
                         check[nx][ny] = true;
                     }
                 }
@@ -78,10 +84,11 @@ public class Main {
         }
     }
 
-    public static void printArr(int[][] arr) {
-        for (int[] a : arr) {
-            for (int i : a) {
-                System.out.print(i + " ");
+    public static void printDist(int[][] dist) {
+
+        for (int[] a : dist) {
+            for (int k : a) {
+                System.out.print(k + " ");
             }
             System.out.println();
         }
