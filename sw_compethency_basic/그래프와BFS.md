@@ -33,6 +33,7 @@
 | 번호 | 문제 | 코드 |
 |:---:|:---:|:---|
 | 2178  | [미로 탐색](https://www.acmicpc.net/problem/2178) | [java](https://github.com/hwlee9505/Algorithm/blob/master/boj/2178.java) |
+| 7576  | [토마토](https://www.acmicpc.net/problem/7576) | [java](https://github.com/hwlee9505/Algorithm/blob/master/boj/7576.java) |
 
 ---
 
@@ -124,6 +125,4 @@ BFS는 `모든 가중치가 1`일 때, `최단 거리를 구하는 알고리즘`
 3. 정점과 간선의 개수가 적어야 한다.(적다는 것은 문제의 조건에 맞춰서 해결할 수 있다는 것을 의미한다.)  
 ㄴ 시간제한, 메모리제한을 지키기 위해서  
 
-
-
-
+---  
