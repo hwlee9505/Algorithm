@@ -1,6 +1,69 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayDeque;
+import java.util.StringTokenizer;
+
+// deque를 이용
+
+public class Main {
+
+    public static final int MAX = 100001;
+
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st = new StringTokenizer(br.readLine());
+
+        int n = Integer.parseInt(st.nextToken());
+        int k = Integer.parseInt(st.nextToken());
+
+        int[] dist = new int[MAX];
+        boolean[] check = new boolean[MAX];
+
+        // deque를 사용하면 큐를 두개 사용안해도 된다.
+        ArrayDeque<Integer> q = new ArrayDeque<>();
+
+        q.offer(n);
+        dist[n] = 0;
+        check[n] = true;
+
+        while (!q.isEmpty()) {
+            int now = q.pollFirst();
+
+            if(now * 2 < MAX){
+                if(check[now * 2] == false){
+                    q.offerFirst(now * 2);
+                    dist[now * 2] = dist[now];
+                    check[now * 2] = true;
+                }
+            }
+
+            if (now - 1 >= 0) {
+                if (check[now - 1] == false) {
+                    q.offerLast(now - 1);
+                    dist[now - 1] = dist[now] + 1;
+                    check[now - 1] = true;
+                }
+            }
+
+            if (now + 1 < MAX) {
+                if (check[now + 1] == false) {
+                    q.offerLast(now + 1);
+                    dist[now + 1] = dist[now] + 1;
+                    check[now + 1] = true;
+                }
+            }
+        }
+
+        System.out.println(dist[k]);
+    }
+}
+
+/////////////////////////////////////////////////////////////////////////////
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.StringTokenizer;
