@@ -7,28 +7,42 @@ public class Main {
     public static int[] memo;
 
     public static void main(String[] args) throws IOException {
-
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int n = Integer.parseInt(br.readLine());
+
         memo = new int[n + 1];
-
-        System.out.println(go(n));
-
+        System.out.println(topDown(n));
+        memo = new int[n + 1];
+        System.out.println(bottomUp(n));
     }
+    
+    // 1. DP - top down 방식
+    public static int topDown(int n) {
 
-    public static int go(int n) {
-
-        if (n <= 2) {
+        if (n == 0 || n == 1 || n == 2) {
             return n;
         } else {
             if (memo[n] > 0) {
                 return memo[n];
             }
-            memo[n] = go(n - 1) + go(n - 2);
+            memo[n] = topDown(n - 1) + tpDown(n - 2);
 
+            // ✨ 계산 과정 중간중간 %를 취해주지 않으면
+            // 계산 도중에 int 자료형 범위의 최댓값을 벗어나서 오버플로우가 발생한다.
+            return memo[n] % 10007;
         }
-        // ✨ 계산 과정 중간중간 %를 취해주지 않으면
-        // 계산 도중에 int 자료형 범위의 최댓값을 벗어나서 오버플로우가 발생한다.
+    }
+
+    // 2. DP - bottom up 방식
+    public static int bottomUp(int n) {
+
+        memo[0] = 0;
+        memo[1] = 1;
+        memo[2] = 2;
+
+        for (int i = 3; i <= n; i++) {
+            memo[i] = memo[i - 1] + memo[i - 2];
+        }
         return memo[n] % 10007;
     }
 }
