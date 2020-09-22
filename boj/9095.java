@@ -3,6 +3,49 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class Main {
+
+    public static int cnt;
+
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int n = Integer.parseInt(br.readLine());
+
+
+        for (int i = 0; i < n; i++) {
+            int goal = Integer.parseInt(br.readLine());
+            cnt = 0;
+            recurse(0, goal);
+            System.out.println(cnt);
+        }
+    }
+
+    public static void recurse(int sum, int goal) {
+
+        // 1. 정답일 경우
+        if (sum == goal) {
+            ++cnt;
+            return;
+        }
+
+        // 2. 불가능할 경우
+        if (sum > goal) {
+            return;
+        }
+
+        // 3. 다음 경우 호출
+        for (int i = 1; i <= 3; i++) {
+            recurse(sum + i, goal);
+        }
+    }
+}
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+public class Main {
     public static void main(String[] args) throws IOException {
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -32,6 +75,7 @@ public class Main {
         return now;
     }
 }
+
 /////////////////////////////////////////////////////////////////////////////////////////////
 
 import java.io.BufferedReader;
