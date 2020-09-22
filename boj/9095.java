@@ -25,13 +25,14 @@ public class Main {
 
         for (int i = 0; i < n; i++) {
 
-            // 1. top down
             int temp = Integer.parseInt(br.readLine());
+
+            // 1. top down
             memo = new int[temp + 1];
             System.out.println(topDown(temp));
 
             // 2. bottom up
-            memo = new int[temp + 1];
+            memo = new int[temp +1];
             System.out.println(bottomUp(temp));
 
         }
@@ -63,9 +64,8 @@ public class Main {
         memo[2] = 2;
 
         for (int i = 3; i <= n; i++) {
-            memo[n] = topDown(n-1) + topDown(n-2) + topDown(n-3);
+            memo[i] = memo[i - 1] + memo[i - 2] + memo[i - 3];
         }
-
         return memo[n];
     }
 }
