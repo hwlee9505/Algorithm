@@ -13,6 +13,10 @@ import java.io.InputStreamReader;
 
 // D[N] = D[N-1] + D[N-2] + D[N-3]
 
+// 이 문제에서 배운 팁 두 가지
+// 1. 숫자가 커서 나누기를 답으로 하는 문제들은 대부분 long 자료형을 사용해야한다.  
+// 2. 공집합도 1로 보는 일반화
+
 public class Main {
 
     public static long[] memo;
