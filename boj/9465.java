@@ -2,7 +2,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
-
 //------------------------------------------------
 // Dynamic Programming
 // Dynamic Programming 은 Brute Force 로 풀 수 있다.
@@ -25,11 +24,11 @@ import java.util.StringTokenizer;
 // 3. D[i][2] (아래쪽 스티커를 뜯음)
 //    i-1 열에서 아래쪽 스티커는 뜯으면 안된다.
 //    max(D[i-1][0], D[i-1][1]) + cost[i][1]
-//-----------------------------------------------
+//----------------------------------------------
 public class Main {
 
-    static int[][] cost;
-    static long[][] memo;
+    public static int[][] cost;
+    public static long[][] memo;
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -38,35 +37,31 @@ public class Main {
         while (size-- > 0) {
 
             int n = Integer.parseInt(br.readLine());
-            cost = new int[n + 1][2];
+            cost = new int[2][n + 1];
 
-            StringTokenizer st1 = new StringTokenizer(br.readLine());
-            StringTokenizer st2 = new StringTokenizer(br.readLine());
-
-            for (int i = 1; i <= n; i++) {
-                cost[i][0] = Integer.parseInt(st1.nextToken());
-            }
-            for (int i = 1; i <= n; i++) {
-                cost[i][1] = Integer.parseInt(st2.nextToken());
+            for (int i = 0; i < cost.length; i++) {
+                StringTokenizer st = new StringTokenizer(br.readLine());
+                for (int j = 1; j < cost[0].length; j++) {
+                    cost[i][j] = Integer.parseInt(st.nextToken());
+                }
             }
 
             // 메모이제이션
             // j == 0 (뜯지 않음)
             // j == 1 (위쪽 스티커를 뜯음)
             // j == 2 (이레쩍 스티커를 뜯음)
-            memo = new long[n + 1][3];
-
+            memo = new long[n+1][3];
+            
             System.out.println(bottomUp(n));
         }
     }
 
-    public static long bottomUp(int n) {
+    public static long bottomUp(int n){
 
-
-        for (int i = 1; i <= n; i++) {
-            memo[i][0] = Math.max(memo[i - 1][0], Math.max(memo[i - 1][1], memo[i - 1][2]));
-            memo[i][1] = Math.max(memo[i - 1][0], memo[i - 1][2]) + cost[i][0];
-            memo[i][2] = Math.max(memo[i - 1][0], memo[i - 1][1]) + cost[i][1];
+        for(int i = 1; i <=n; i++){
+            memo[i][0] = Math.max(memo[i-1][0], Math.max(memo[i-1][1], memo[i-1][2]));
+            memo[i][1] = Math.max(memo[i-1][0], memo[i-1][2]) + cost[0][i];
+            memo[i][2] = Math.max(memo[i-1][0], memo[i-1][1]) + cost[1][i];
         }
 
         return Math.max(memo[n][0], Math.max(memo[n][1], memo[n][2]));
