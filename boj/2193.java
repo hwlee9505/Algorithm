@@ -7,13 +7,15 @@ import java.io.InputStreamReader;
 // D[N] = N자리 이친수의 개수
 //------------------------------------------
 // D[i][j] = i자리 이친수의 개수 + 마지막은 j이 였음
-// 
+//
 // D[i][j] = D[i-1][0] + D[i-1][1] (j==0)
 // D[i][j] = D[i-1][0] (j==1)
 //------------------------------------------
+// 이 문제는 0과 1밖에 없기 때문에 1차원 점화식으로도 풀 수 있다.
 public class Main {
 
     public static long[][] memo;
+    public static long[] memo2;
 
     public static void main(String[] args) throws IOException {
 
@@ -23,7 +25,8 @@ public class Main {
         memo = new long[n + 1][2];
         System.out.println(bottomUp(n));
 
-
+        memo2 = new long[n+1];
+        System.out.println(bottomUp2(n));
     }
 
     public static long bottomUp(int n) {
@@ -48,5 +51,20 @@ public class Main {
         }
 
         return memo[n][0] + memo[n][1];
+    }
+
+    // 0과 1밖에 없으므로 1차원 점화식으로 풀 수 있다.
+    public static long bottomUp2(int n){
+        // 1자리 이친수의 개수는 1로만
+        memo2[1] = 1;
+        
+        if(n >= 2){
+            memo2[2] = 1;
+        }
+        
+        for(int i = 3; i <= n; i ++){
+            memo2[i] = memo2[i-1] + memo2[i-2];
+        }
+        return memo2[n];
     }
 }
