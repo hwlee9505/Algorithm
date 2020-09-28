@@ -54,7 +54,7 @@ public class Main {
         // 전 문제에서 최댓값을 찾는데에 Arrays.sort를 쓴적이 있는데
         // 그러면 O(N*logN)으로서 더 걸립니다.
         int answer = memo[0];
-        for (int i = 0; i < n; i++) {
+        for (int i = 1; i < n; i++) {
             if (answer < memo[i]) {
                 answer = memo[i];
             }
