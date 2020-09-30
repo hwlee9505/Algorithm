@@ -18,6 +18,7 @@ public class Main {
             if (check[i] == true) {
                 continue;
             }
+        // for (int j = i * i; j <= m; j += i) {     // 범위를 넘어갈 수 있다.
             for (int j=i+i; j<=m; j+=i) {
                 check[j] = true;
             }
