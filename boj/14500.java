@@ -3,6 +3,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
+// 테트로미노
 /**
  * Brute Force 3 단계
  *
@@ -14,42 +15,31 @@ import java.util.StringTokenizer;
 public class Main {
 
     public static void main(String[] args) throws IOException {
-
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
 
-        int ySize = Integer.parseInt(st.nextToken());
-        int xSize = Integer.parseInt(st.nextToken());
+        int n = Integer.parseInt(st.nextToken());
+        int m = Integer.parseInt(st.nextToken());
 
-        int[][] arr2D = new int[ySize][xSize];
+        int[][] arr = new int[n][m];
 
-        for (int i = 0; i < arr2D.length; i++) {
+        for (int i = 0; i < arr.length; i++) {
             st = new StringTokenizer(br.readLine());
-            for (int j = 0; j < arr2D[0].length; j++) {
-                arr2D[i][j] = Integer.parseInt(st.nextToken());
+            for (int j = 0; j < arr[0].length; j++) {
+                arr[i][j] = Integer.parseInt(st.nextToken());
             }
         }
 
-        //        for(int[] xArr : arr2D){
-        //            for(int module : xArr){
-        //                System.out.print(module + " ");
-        //            }
-        //            System.out.println();
-        //        }
-
-
         int sum = 0;
-        for (int i = 0; i < arr2D.length; i++) {
-            for (int j = 0; j < arr2D[0].length; j++) {
+
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr[0].length; j++) {
 
                 //  1.
                 //  🟥🟦🟦🟦
-                if (j + 3 < xSize) {
-                    int temp = arr2D[i][j] + arr2D[i][j + 1] + arr2D[i][j + 2] + arr2D[i][j + 3];
+                if (j < arr[0].length - 3) {
+                    int temp = arr[i][j] + arr[i][j + 1] + arr[i][j + 2] + arr[i][j + 3];
                     sum = Math.max(sum, temp);
-//                    if(sum < temp){
-//                        sum = temp;
-//                    }
                 }
 
                 //  2.
@@ -57,16 +47,16 @@ public class Main {
                 //  🟦
                 //  🟦
                 //  🟦
-                if (i + 3 < ySize) {
-                    int temp = arr2D[i][j] + arr2D[i + 1][j] + arr2D[i + 2][j] + arr2D[i + 3][j];
+                if (i < arr.length - 3) {
+                    int temp = arr[i][j] + arr[i + 1][j] + arr[i + 2][j] + arr[i + 3][j];
                     sum = Math.max(sum, temp);
                 }
 
                 //  3.
                 //  🟥🟨
                 //  🟨🟨
-                if ((j + 1 < xSize) && (i + 1 < ySize)) {
-                    int temp = arr2D[i][j] + arr2D[i][j + 1] + arr2D[i + 1][j] + arr2D[i + 1][j + 1];
+                if (i < arr.length - 1 && j < arr[0].length - 1) {
+                    int temp = arr[i][j] + arr[i][j + 1] + arr[i + 1][j] + arr[i + 1][j + 1];
                     sum = Math.max(sum, temp);
                 }
 
@@ -74,8 +64,8 @@ public class Main {
                 //  🟥
                 //  🟧
                 //  🟧🟧
-                if ((j + 1 < xSize) && (i + 2 < ySize)) {
-                    int temp = arr2D[i][j] + arr2D[i + 1][j] + arr2D[i + 2][j] + arr2D[i + 2][j + 1];
+                if (i < arr.length - 2 && j < arr[0].length - 1) {
+                    int temp = arr[i][j] + arr[i + 1][j] + arr[i + 2][j] + arr[i + 2][j + 1];
                     sum = Math.max(sum, temp);
                 }
 
@@ -83,25 +73,24 @@ public class Main {
                 //  🟥🟧
                 //    🟧
                 //    🟧
-                if ((j + 1 < xSize) && (i + 2 < ySize)) {
-                    int temp = arr2D[i][j] + arr2D[i][j + 1] + arr2D[i + 1][j + 1] + arr2D[i + 2][j + 1];
+                if ((j < arr[0].length - 1) && (i < arr.length - 2)) {
+                    int temp = arr[i][j] + arr[i][j + 1] + arr[i + 1][j + 1] + arr[i + 2][j + 1];
                     sum = Math.max(sum, temp);
                 }
-
 
                 //  6.
                 //  🟥🟧🟧
                 //  🟧
-                if ((j + 2 < xSize) && (i + 1) < ySize) {
-                    int temp = arr2D[i][j] + arr2D[i][j + 1] + arr2D[i][j + 2] + arr2D[i + 1][j];
+                if ((j < arr[0].length - 2) && (i < arr.length - 1)) {
+                    int temp = arr[i][j] + arr[i][j + 1] + arr[i][j + 2] + arr[i + 1][j];
                     sum = Math.max(sum, temp);
                 }
 
                 //  7.
                 //      🟧
                 //  🟥🟧🟧
-                if ((j + 2 < xSize) && (i > 0)) {
-                    int temp = arr2D[i][j] + arr2D[i][j + 1] + arr2D[i][j + 2] + arr2D[i - 1][j + 2];
+                if (i > 0 && j < arr[0].length - 2) {
+                    int temp = arr[i][j] + arr[i][j + 1] + arr[i][j + 2] + arr[i - 1][j + 2];
                     sum = Math.max(sum, temp);
                 }
 
@@ -109,8 +98,8 @@ public class Main {
                 //    🟥
                 //    🟧
                 //  🟧🟧
-                if ((j > 0) && (i + 2 < ySize)) {
-                    int temp = arr2D[i][j] + arr2D[i + 1][j] + arr2D[i + 2][j] + arr2D[i + 2][j - 1];
+                if ((j > 0) && (i < arr.length - 2)) {
+                    int temp = arr[i][j] + arr[i + 1][j] + arr[i + 2][j] + arr[i + 2][j - 1];
                     sum = Math.max(sum, temp);
                 }
 
@@ -118,8 +107,8 @@ public class Main {
                 //  🟥🟧
                 //  🟧
                 //  🟧
-                if ((j + 1 < xSize) && (i + 2 < ySize)) {
-                    int temp = arr2D[i][j] + arr2D[i][j + 1] + arr2D[i + 1][j] + arr2D[i + 2][j];
+                if ((j < arr[0].length - 1) && (i < arr.length - 2)) {
+                    int temp = arr[i][j] + arr[i][j + 1] + arr[i + 1][j] + arr[i + 2][j];
                     sum = Math.max(sum, temp);
                 }
 
@@ -127,16 +116,16 @@ public class Main {
                 //  10.
                 //  🟥🟧🟧
                 //      🟧
-                if ((j + 2 < xSize) && (i + 1 < ySize)) {
-                    int temp = arr2D[i][j] + arr2D[i][j + 1] + arr2D[i][j + 2] + arr2D[i + 1][j + 2];
+                if ((j < arr[0].length - 2) && (i < arr.length - 1)) {
+                    int temp = arr[i][j] + arr[i][j + 1] + arr[i][j + 2] + arr[i + 1][j + 2];
                     sum = Math.max(sum, temp);
                 }
 
                 //  11.
                 //  🟥
                 //  🟧🟧🟧
-                if ((j + 2 < xSize) && (i + 1 < ySize)) {
-                    int temp = arr2D[i][j] + arr2D[i + 1][j] + arr2D[i + 1][j + 1] + arr2D[i + 1][j + 2];
+                if ((j < arr[0].length - 2) && (i < arr.length - 1)) {
+                    int temp = arr[i][j] + arr[i + 1][j] + arr[i + 1][j + 1] + arr[i + 1][j + 2];
                     sum = Math.max(sum, temp);
                 }
 
@@ -144,8 +133,8 @@ public class Main {
                 //  🟥
                 //  🟩🟩
                 //    🟩
-                if ((j + 1 < xSize) && (i + 2 < ySize)) {
-                    int temp = arr2D[i][j] + arr2D[i + 1][j] + arr2D[i + 1][j + 1] + arr2D[i + 2][j + 1];
+                if ((j < arr[0].length - 1) && (i < arr.length - 2)) {
+                    int temp = arr[i][j] + arr[i + 1][j] + arr[i + 1][j + 1] + arr[i + 2][j + 1];
                     sum = Math.max(sum, temp);
                 }
 
@@ -153,32 +142,32 @@ public class Main {
                 //    🟥
                 //  🟩🟩
                 //  🟩
-                if ((j > 0) && (i + 2 < ySize)) {
-                    int temp = arr2D[i][j] + arr2D[i + 1][j] + arr2D[i + 1][j - 1] + arr2D[i + 2][j - 1];
+                if ((j > 0) && (i < arr.length - 2)) {
+                    int temp = arr[i][j] + arr[i + 1][j] + arr[i + 1][j - 1] + arr[i + 2][j - 1];
                     sum = Math.max(sum, temp);
                 }
 
                 //  14.
                 //    🟩🟩
                 //  🟥🟩
-                if ((j + 2 < xSize) && (i > 0)) {
-                    int temp = arr2D[i][j] + arr2D[i][j + 1] + arr2D[i - 1][j + 1] + arr2D[i - 1][j + 2];
+                if ((j < arr[0].length - 2) && (i > 0)) {
+                    int temp = arr[i][j] + arr[i][j + 1] + arr[i - 1][j + 1] + arr[i - 1][j + 2];
                     sum = Math.max(sum, temp);
                 }
 
                 //  15.
                 //  🟥🟩
                 //    🟩🟩
-                if ((j + 2 < xSize) && (i + 1 < ySize)) {
-                    int temp = arr2D[i][j] + arr2D[i][j + 1] + arr2D[i + 1][j + 1] + arr2D[i + 1][j + 2];
+                if ((j < arr[0].length - 2) && (i < arr.length - 1)) {
+                    int temp = arr[i][j] + arr[i][j + 1] + arr[i + 1][j + 1] + arr[i + 1][j + 2];
                     sum = Math.max(sum, temp);
                 }
 
                 //  16.
                 //  🟥🟪🟪
                 //    🟪
-                if ((j + 2 < xSize) && (i + 1 < ySize)) {
-                    int temp = arr2D[i][j] + arr2D[i][j + 1] + arr2D[i][j + 2] + arr2D[i + 1][j + 1];
+                if ((j < arr[0].length - 2) && (i < arr.length - 1)) {
+                    int temp = arr[i][j] + arr[i][j + 1] + arr[i][j + 2] + arr[i + 1][j + 1];
                     sum = Math.max(sum, temp);
                 }
 
@@ -186,8 +175,8 @@ public class Main {
                 //  🟥
                 //  🟪🟪
                 //  🟪
-                if ((j + 1 < xSize) && (i + 2 < ySize)) {
-                    int temp = arr2D[i][j] + arr2D[i + 1][j] + arr2D[i + 1][j + 1] + arr2D[i + 2][j];
+                if ((j < arr[0].length - 1) && (i < arr.length - 2)) {
+                    int temp = arr[i][j] + arr[i + 1][j] + arr[i + 1][j + 1] + arr[i + 2][j];
                     sum = Math.max(sum, temp);
                 }
 
@@ -195,8 +184,8 @@ public class Main {
                 //    🟪
                 //  🟥🟪🟪
                 //
-                if ((j + 2 < xSize) && (i > 0)) {
-                    int temp = arr2D[i][j] + arr2D[i][j + 1] + arr2D[i - 1][j + 1] + arr2D[i][j + 2];
+                if ((j < arr[0].length - 2) && (i > 0)) {
+                    int temp = arr[i][j] + arr[i][j + 1] + arr[i - 1][j + 1] + arr[i][j + 2];
                     sum = Math.max(sum, temp);
                 }
 
@@ -204,14 +193,12 @@ public class Main {
                 //    🟥
                 //  🟪🟪
                 //    🟪
-                if ((j > 0) && (i + 2 < ySize)) {
-                    int temp = arr2D[i][j] + arr2D[i+1][j] + arr2D[i + 1][j -1] + arr2D[i + 2][j];
+                if ((j > 0) && (i < arr.length - 2)) {
+                    int temp = arr[i][j] + arr[i + 1][j] + arr[i + 1][j - 1] + arr[i + 2][j];
                     sum = Math.max(sum, temp);
                 }
-
             }
         }
-
         System.out.println(sum);
     }
 }
