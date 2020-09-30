@@ -51,7 +51,7 @@ public class Main {
                     //  원하는 조건이 갖춰 졌다면 종료시켜야 한다.
                 }
 
-// 더 간결한 코드 => O(N^2)
+// 더 간결한 코드 => O(N^2) [사전에 sum을 배열 원소의 총합을 가지고 있어야 한다.]
 //                if (sum - arr[i] - arr[j] == 100) {
 //                    for (int k = 0; k < arr.length; k++) {
 //                        if (i == k || j == k) continue;
