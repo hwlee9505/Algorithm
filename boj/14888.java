@@ -1,6 +1,92 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.StringTokenizer;
+
+class Pair {
+
+    int max;
+    int min;
+
+    public Pair() {
+    }
+
+    public Pair(int max, int min) {
+        this.max = max;
+        this.min = min;
+    }
+}
+
+public class Main {
+
+    public static int max = Integer.MIN_VALUE;
+    public static int min = Integer.MAX_VALUE;
+
+    public static void main(String[] args) throws IOException {
+
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+        int n = Integer.parseInt(br.readLine());
+
+        int[] arr = new int[n];
+
+        StringTokenizer st = new StringTokenizer(br.readLine());
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = Integer.parseInt(st.nextToken());
+        }
+
+        st = new StringTokenizer(br.readLine());
+
+        int plus = Integer.parseInt(st.nextToken());
+        int minus = Integer.parseInt(st.nextToken());
+        int mul = Integer.parseInt(st.nextToken());
+        int div = Integer.parseInt(st.nextToken());
+
+        System.out.println(recurse(arr, 0, arr[0], plus, minus, mul, div).max);
+        System.out.println(recurse(arr, 0, arr[0], plus, minus, mul, div).min);
+
+    }
+
+    public static Pair recurse(int[] arr, int idx, int sum, int plus, int minus, int mul, int div) {
+
+        // 1. 정답을 찾은 경우
+        if (plus == 0 && minus == 0 && mul == 0 && div == 0) {
+            max = Math.max(max,sum);
+            min = Math.min(min,sum);
+            return new Pair(max, min);
+        }
+
+//        if (idx == arr.length - 1) {
+//            max = Math.max(max,sum);
+//            min = Math.min(min,sum);
+//            return new Pair(max, min);
+//        }
+        // 2. 불가능한 경우
+        
+        // 3. 다음경우 호출
+        Pair answer = new Pair();
+        if (plus > 0) {
+            answer = recurse(arr, idx + 1, sum + arr[idx + 1], plus - 1, minus, mul, div);
+        }
+        if (minus > 0) {
+            answer = recurse(arr, idx + 1, sum - arr[idx + 1], plus, minus - 1, mul, div);
+        }
+        if (mul > 0) {
+            answer = recurse(arr, idx + 1, sum * arr[idx + 1], plus, minus, mul - 1, div);
+        }
+        if (div > 0) {
+            answer = recurse(arr, idx + 1, sum / arr[idx + 1], plus, minus, mul, div - 1);
+        }
+
+        return answer;
+    }
+}
+
+/////////////////////////////////////////////////////////////////////////////////////////
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
