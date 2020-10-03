@@ -42,21 +42,21 @@ public class Main {
         int mul = Integer.parseInt(st.nextToken());
         int div = Integer.parseInt(st.nextToken());
 
-        System.out.println(recurse(arr, 0, arr[0], plus, minus, mul, div).max);
-        System.out.println(recurse(arr, 0, arr[0], plus, minus, mul, div).min);
+        System.out.println(recurse(arr, 1, arr[0], plus, minus, mul, div).max);
+        System.out.println(recurse(arr, 1, arr[0], plus, minus, mul, div).min);
 
     }
 
     public static Pair recurse(int[] arr, int idx, int sum, int plus, int minus, int mul, int div) {
 
         // 1. 정답을 찾은 경우
-        if (plus == 0 && minus == 0 && mul == 0 && div == 0) {
+        if (plus == 0 && minus == 0 && mul == 0 && div == 0) { // 연산자 끼워넣기(2)에서는 아래 조건문을 안쓰면 에러 난다.
             max = Math.max(max,sum);
             min = Math.min(min,sum);
             return new Pair(max, min);
         }
 
-//        if (idx == arr.length - 1) {
+//        if (idx == arr.length) {        // 이것도 가능하다.
 //            max = Math.max(max,sum);
 //            min = Math.min(min,sum);
 //            return new Pair(max, min);
@@ -66,16 +66,16 @@ public class Main {
         // 3. 다음경우 호출
         Pair answer = new Pair();
         if (plus > 0) {
-            answer = recurse(arr, idx + 1, sum + arr[idx + 1], plus - 1, minus, mul, div);
+            answer = recurse(arr, idx + 1, sum + arr[idx], plus - 1, minus, mul, div);
         }
         if (minus > 0) {
-            answer = recurse(arr, idx + 1, sum - arr[idx + 1], plus, minus - 1, mul, div);
+            answer = recurse(arr, idx + 1, sum - arr[idx], plus, minus - 1, mul, div);
         }
         if (mul > 0) {
-            answer = recurse(arr, idx + 1, sum * arr[idx + 1], plus, minus, mul - 1, div);
+            answer = recurse(arr, idx + 1, sum * arr[idx], plus, minus, mul - 1, div);
         }
         if (div > 0) {
-            answer = recurse(arr, idx + 1, sum / arr[idx + 1], plus, minus, mul, div - 1);
+            answer = recurse(arr, idx + 1, sum / arr[idx], plus, minus, mul, div - 1);
         }
 
         return answer;
