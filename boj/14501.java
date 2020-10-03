@@ -4,6 +4,55 @@ import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
 public class Main {
+
+    public static void main(String[] args) throws IOException {
+
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int n = Integer.parseInt(br.readLine());
+
+        int[] time = new int[n + 1];
+        int[] pay = new int[n + 1];
+
+        for (int i = 1; i <= n; i++) {
+            StringTokenizer st = new StringTokenizer(br.readLine());
+            time[i] = Integer.parseInt(st.nextToken());
+            pay[i] = Integer.parseInt(st.nextToken());
+        }
+
+        System.out.println(recurse(time, pay, 1, 0, n));
+    }
+
+    public static int recurse(int[] time, int[] pay, int idx, int sum, int n) {
+
+        // 2. 불가능한 경우
+        if (idx > n + 1) {
+            return 0;
+        }
+
+        // 1. 정답인 경우
+//        if (time[idx] + idx > n + 1) {
+        if (idx ==  n + 1) {
+            return sum;
+        }
+
+
+        // 3. 다음경우 호출
+        int answer = 0;
+        answer = Math.max(recurse(time, pay, idx + time[idx], sum + pay[idx], n), answer);
+        answer = Math.max(recurse(time, pay, idx + 1, sum, n), answer);
+
+        return answer;
+    }
+}
+
+////////////////////////////////////////////////////////////////////////////////////////
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.StringTokenizer;
+
+public class Main {
     public static int[] T;          // 걸리는 기간
     public static int[] P;          // 상담을 했을 때 받을 수 있는 금액
     public static int N;            // N+1일날 퇴사
