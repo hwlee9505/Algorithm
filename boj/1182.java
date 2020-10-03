@@ -32,7 +32,7 @@ public class Main {
 
     public static int go(int[] arr, int S, int idx, int sum) {
 
-        if (idx == arr.length) {
+        if (idx == arr.length) {       // ✨ S가 0일 경우를 생각해라
             if (sum == S) {            // 1.정답을 찾은 경우
                 return 1;
             } else {                   // 2.불가능한 경우
