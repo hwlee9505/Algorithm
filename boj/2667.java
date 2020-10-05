@@ -17,6 +17,8 @@ import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Queue;
 
+// ✨단순 bfs 였을 떄 탐색을 정점과 연결된 정점들로 했을 때
+// // 이 문제에서는           동, 서, 남, 북 연결된 정점들로
 class Pair {
     int x;
     int y;
