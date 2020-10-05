@@ -2,7 +2,7 @@
 
 | 번호 | 문제 | 코드 |  
 |:---:|:---:|:---|  
-| 13023 | [ABCDE](https://www.acmicpc.net/problem/13023) | [java](https://github.com/hwlee9505/Algorithm/blob/master/boj/13023.java) |  
+| 13023❗️ | [ABCDE](https://www.acmicpc.net/problem/13023) | [java](https://github.com/hwlee9505/Algorithm/blob/master/boj/13023.java) |  
 
 # 그래프의 탐색  
 
