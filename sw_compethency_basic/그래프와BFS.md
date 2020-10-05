@@ -20,7 +20,7 @@
 
 | 번호 | 문제 | 코드 |  
 |:---:|:---:|:---|  
-| 1707  | [이분 그래프](https://www.acmicpc.net/problem/1707) | [java](https://github.com/hwlee9505/Algorithm/blob/master/boj/1707.java) |
+| 1707❗️  | [이분 그래프](https://www.acmicpc.net/problem/1707) | [java](https://github.com/hwlee9505/Algorithm/blob/master/boj/1707.java) |
 
 # 플러드 필
 
@@ -117,6 +117,10 @@
 - A에 포함되어 있는 정점끼리 연결된 간선이 없음  
 - B에 포함되어 있는 정점끼리 연결된 간선이 없음  
 - 모든 간선의 한 끝 점은 A에, 다른 끝 점은 B에  
+
+1. 3-c를 이용해서 피아식별을 한다.  
+2. 어떤 정접은 그 인접리스트에 담겨있는 정점들과 피아식별이 가능해야 한다.  
+
 
 ---
 
