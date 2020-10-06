@@ -31,16 +31,9 @@ public class Main {
             Arrays.fill(d, -1);
         }
 
-        for (int[] d : dist) {
-            for (int i : d) {
-               System.out.print(i + " ");
-            }
-            System.out.println();
-        }
-
         Queue<Pair> q = new LinkedList<>();
 
-        // 👉 현재 상황 (default 로 어떤 값을 설정해 놓아야 하는가)
+        // 👉 현재 황 (default 로 어떤 값을 설정해 놓아야 하는가)
         //    영선이가 이미 화면에 이모티콘 1개를 입력해 놓은 상태
         //    클립보드에는 이모티콘이 없다.
         q.offer(new Pair(1, 0)); //  화면에 이모티콘 1개 : 클립보드에 이모티콘 0개
@@ -73,13 +66,6 @@ public class Main {
             }
         }
 
-        for (int[] d : dist) {
-            for (int i : d) {
-                System.out.print(i + " ");
-            }
-            System.out.println();
-        }
-
         int answer = -1;
 
         for (int i = 0; i < dist.length; i++) {
@@ -91,4 +77,4 @@ public class Main {
         }
         System.out.println(answer);
     }
-} 
+}
