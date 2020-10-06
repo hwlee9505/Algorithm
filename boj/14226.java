@@ -5,6 +5,17 @@ import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Queue;
 
+class Pair {
+
+    int s; // Screen
+    int c; // ClipBoard
+
+    public Pair(int s, int c) {
+        this.s = s;
+        this.c = c;
+    }
+}
+
 public class Main {
 
     public static void main(String[] args) throws IOException {
@@ -16,51 +27,62 @@ public class Main {
 
         int[][] dist = new int[n + 1][n + 1];
 
-        for (int i = 0; i <= n; i++) {
-            Arrays.fill(dist[i], -1);
+        for (int[] d : dist) {
+            Arrays.fill(d, -1);
         }
 
-        Queue<Integer> q = new LinkedList<>();
+        for (int[] d : dist) {
+            for (int i : d) {
+               System.out.print(i + " ");
+            }
+            System.out.println();
+        }
 
-        // 👉 현재 상황 (default로 어떤 값을 설정해 놓아야 하는가)
+        Queue<Pair> q = new LinkedList<>();
+
+        // 👉 현재 상황 (default 로 어떤 값을 설정해 놓아야 하는가)
         //    영선이가 이미 화면에 이모티콘 1개를 입력해 놓은 상태
         //    클립보드에는 이모티콘이 없다.
-        q.offer(1);
-        q.offer(0);
+        q.offer(new Pair(1, 0)); //  화면에 이모티콘 1개 : 클립보드에 이모티콘 0개
 
         dist[1][0] = 0;
 
         while (!q.isEmpty()) {
-            int s = q.poll();
-            int c = q.poll();
 
-            // 1. 복사: (s,c)->(s,s)
-            // 화면에 있는 이모티콘을 모두 복사해서 클립보드에 저장
-            if (dist[s][s] == -1) {
-                dist[s][s] = dist[s][c] + 1;
-                q.offer(s);
-                q.offer(s);
+            Pair p = q.poll();
+
+            // 1. 복사 : (s,s) -> (s,s)
+            // 화면에 있는 이모티콘을 모두 복사해서 클립보드에 저장한다.
+            if (dist[p.s][p.s] == -1) {
+                dist[p.s][p.s] = dist[p.s][p.c] + 1;
+                q.offer(new Pair(p.s, p.s));
             }
 
-            // 2. 붙여넣기: (s,c)->(s+c,c)
-            // 클립보드에 있는 모든 이모티콘을 화면에 붙여넣기
-            if (s + c <= n && dist[s + c][c] == -1) {
-                dist[s + c][c] = dist[s][c] + 1;
-                q.offer(s + c);
-                q.offer(c);
+            // 2. 붙여넣기 : (s,c) -> (s+c,c)
+            // 클립보드에 있는 모든 이모티콘을 화면에 붙여넣기 한다.
+            if (p.s + p.c <= n && dist[p.s + p.c][p.c] == -1) {
+                dist[p.s + p.c][p.c] = dist[p.s][p.c] + 1;
+                q.offer(new Pair(p.s + p.c, p.c));
             }
 
-            // 3. 삭제: (s,c)->(s-1,c)
-            // 화면에 있는 이모티콘 중 하나를 삭제
-            if (s - 1 >= 0 && dist[s - 1][c] == -1) {
-                dist[s - 1][c] = dist[s][c] + 1;
-                q.offer(s - 1);
-                q.offer(c);
+            // 3. 삭제 : (s,c) -> (s-1, c)
+            // 화면에 있는 이모티콘 중 하나를 삭제한다.
+            if (p.s - 1 >= 0 && dist[p.s - 1][p.c] == -1) {
+                dist[p.s - 1][p.c] = dist[p.s][p.c] + 1;
+                q.offer(new Pair(p.s - 1, p.c));
             }
         }
- 
+
+        for (int[] d : dist) {
+            for (int i : d) {
+                System.out.print(i + " ");
+            }
+            System.out.println();
+        }
+
         int answer = -1;
-        for (int i = 0; i <= n; i++) {
+
+        for (int i = 0; i < dist.length; i++) {
             if (dist[n][i] != -1) {
                 if (answer == -1 || answer > dist[n][i]) {
                     answer = dist[n][i];
@@ -69,4 +91,4 @@ public class Main {
         }
         System.out.println(answer);
     }
-}
+} 
