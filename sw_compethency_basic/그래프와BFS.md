@@ -42,7 +42,7 @@
 
 | 번호 | 문제 | 코드 |
 |:---:|:---:|:---|
-| 13549  | [숨바꼭질 3](https://www.acmicpc.net/problem/13549) | [java](https://github.com/hwlee9505/Algorithm/blob/master/boj/13549.java) |
+| 13549❗️  | [숨바꼭질 3](https://www.acmicpc.net/problem/13549) | [java](https://github.com/hwlee9505/Algorithm/blob/master/boj/13549.java) |
 | 1261  | [알고스팟](https://www.acmicpc.net/problem/1261) | [java](https://github.com/hwlee9505/Algorithm/blob/master/boj/1261.java) |
 
 # BFS
