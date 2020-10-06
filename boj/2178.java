@@ -76,7 +76,7 @@ public class Main {
                 if ((0 <= nx && nx < n) && (0 <= ny && ny < m)) {
                     if (arr[nx][ny] == 1 && check[nx][ny] == false) {
                         q.offer(new Pair(nx, ny));
-                        dist[nx][ny] = dist[priorPair.x][priorPair.y] + 1;
+                        dist[nx][ny] = dist[priorPair.x][priorPair.y] + 1;  // ✨ 이전을 더 하는게 중요
                         check[nx][ny] = true;
                     }
                 }
