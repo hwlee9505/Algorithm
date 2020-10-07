@@ -49,8 +49,8 @@
 
 | 번호 | 문제 | 코드 |
 |:---:|:---:|:---|
-| 2206  | [벽 부수고 이동하기](https://www.acmicpc.net/problem/2206) | [java](https://github.com/hwlee9505/Algorithm/blob/master/boj/2206.java) |
-| 3055  | [탈출](https://www.acmicpc.net/problem/3055) | [java](https://github.com/hwlee9505/Algorithm/blob/master/boj/3055.java) |
+| 2206❗️ | [벽 부수고 이동하기](https://www.acmicpc.net/problem/2206) | [java](https://github.com/hwlee9505/Algorithm/blob/master/boj/2206.java) |
+| 3055❗️ | [탈출](https://www.acmicpc.net/problem/3055) | [java](https://github.com/hwlee9505/Algorithm/blob/master/boj/3055.java) |
 ---
 
 # 공간 복잡도
