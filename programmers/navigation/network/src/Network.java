@@ -3,12 +3,6 @@ package navigation;
 import java.util.LinkedList;
 import java.util.Queue;
 
-class Main{
-    public static void main(String[] args) {
-        System.out.println(new Network().getNetworkCount(3, new int[][]{{1, 1, 0}, {1, 1, 0}, {0, 0, 1}}));
-    }
-}
-
 public class Network {
 
     public int getNetworkCount(int n, int[][] computers) {
