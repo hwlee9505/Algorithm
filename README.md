@@ -8,5 +8,5 @@
 | 2018 KAKAO BLIND RECRUITMENT | [[3차] 방금 그곡 (level2)](https://programmers.co.kr/learn/courses/30/lessons/17683) | [java](https://github.com/hyunwlee-dev/problem-solving/blob/master/programmers/kakao/ThatSongJustNow.java) |
 | 2017 카카오코드 예선 | [카카오프렌즈 컬러링북 (level2)](https://programmers.co.kr/learn/courses/30/lessons/1829) | [java](https://github.com/hyunwlee-dev/problem-solving/blob/master/programmers/kakao/ColoringBook.java) |
 | 2018 KAKAO BLIND RECRUITMENT | [[1차] 캐시 (level2)](https://programmers.co.kr/learn/courses/30/lessons/17680) | [java](https://github.com/hyunwlee-dev/problem-solving/blob/master/programmers/kakao/Cache.java) |
-| 2021 KAKAO BLIND RECRUITMENT | [순위 검색 (level2)](https://programmers.co.kr/learn/courses/30/lessons/72412) | [java](https://github.com/hyunwlee-dev/problem-solving/blob/master/programmers/kakao/RankingSearching.java) |
+| 2021 KAKAO BLIND RECRUITMENT | 🖍[순위 검색 (level2)](https://programmers.co.kr/learn/courses/30/lessons/72412) | [java](https://github.com/hyunwlee-dev/problem-solving/blob/master/programmers/kakao/RankingSearching.java) |
 ---
