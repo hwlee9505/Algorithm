@@ -16,3 +16,9 @@
 | 문제모음 | 문제 | 코드 |
 |:---:|:---:|:---|
 | Summer/Winter Coding(~2018) | [스킬트리 (level2)](https://programmers.co.kr/learn/courses/30/lessons/49993) | [java](https://github.com/hyunwlee-dev/problem-solving/blob/master/programmers/summerWinter/SkillTree.java) |
+---
+# 연습문제
+
+| 문제모음 | 문제 | 코드 |
+|:---:|:---:|:---|
+| 연습 문제 | [올바른 괄호 (level2)](https://programmers.co.kr/learn/courses/30/lessons/12909) | [java](https://github.com/hyunwlee-dev/problem-solving/blob/master/programmers/practice/CorrectParentheses.java) |
