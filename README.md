@@ -22,3 +22,4 @@
 | 문제모음 | 문제 | 코드 |
 |:---:|:---:|:---|
 | 연습 문제 | [올바른 괄호 (level2)](https://programmers.co.kr/learn/courses/30/lessons/12909) | [java](https://github.com/hyunwlee-dev/problem-solving/blob/master/programmers/practice/CorrectParentheses.java) |
+| 월간 코드 챌린지 시즌1 | [쿼드압축 후 개수 세기 (level2)](https://programmers.co.kr/learn/courses/30/lessons/68936) | [java](https://github.com/hyunwlee-dev/problem-solving/blob/master/programmers/practice/CountAfterQuadCompression.java) |
